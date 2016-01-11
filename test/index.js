@@ -2,19 +2,38 @@ var should = require('chai').should(),
 taxValidator = require('../index');
 
 var TEST_DATA = {
-    valid_id_2015: '12345678911',
+    valid_ids: [
+        '44567139207',
+        '56214987054',
+        '79250374815',
+        '88734261097',
+        '87591203869',
+        '70945781232',
+        '84167085938',
+        '80628453792',
+        '49860157434',
+        '95869473206'
+    ],
+    valid_id_2015: '12345678995',
     invalid_not_enough_unique: '12345678811',
     invalid_wrong_checksum: '12345678912',
     invalid_id_too_long: '123456789111',
     invalid_id_too_short: '123456789',
     invalid_id_leading_zero: '02345678112',
-    valid_id_2016: '12345678114',
+    valid_id_2016: '12345679998',
     invalid_input_1: undefined,
     invalid_input_2: {a: 'test'}
 };
 
 describe('#validate', function() {
-    it('correctly validates a valid tax-id', function() {
+    it('correctly validates some valid tax-ids', function() {
+        TEST_DATA.valid_ids.forEach(function (id) {
+            taxValidator
+            .validate(id)
+            .should.equal(true);
+        });
+    });
+    it('correctly validates a valid 2015-tax-id', function() {
         taxValidator
         .validate(TEST_DATA.valid_id_2015)
         .should.equal(true);

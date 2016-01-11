@@ -13,7 +13,7 @@ npm install --save german-tax-id-validator
 var taxValidator = require('german-tax-id-validator');
 // validate has the follwing signature:
 // validate(taxId, doNotValidate2015, doNotValidate2016), only taxId is required
-var isValid = taxValidator.validate('01234567811');
+var isValid = taxValidator.validate('44567139207');
 ```
 
 The `validate`-method accepts only strings;
@@ -24,7 +24,7 @@ test for a specific version of the tax-id.
 
 ```js
 // only validate pre 2016-ids
-var isValid = taxValidator.validate('01234567811', false, true);
+var isValid = taxValidator.validate('44567139207', false, true);
 // only validate post 2016-ids
-var isValid = taxValidator.validate('01234567811', true, false);
+var isValid = taxValidator.validate('12345679998', true, false);
 ```
